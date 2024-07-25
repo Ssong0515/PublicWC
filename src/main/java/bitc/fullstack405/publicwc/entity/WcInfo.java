@@ -23,7 +23,7 @@ public class WcInfo {
     @ColumnDefault("1")
     private int level; // 화장실 등급
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String name; // 화장실 이름
 
     @Column(nullable = false)
