@@ -23,13 +23,13 @@
 <main class="container">
   <div class="mainConWrap text-center text-white">
     <h2>글쓰기</h2>
-    <p>우리들의 공공화장실, 글쓰기페이지입니다.</p>
+    <p>우리들의 공공화장실, 우화의 글쓰기페이지입니다.</p>
   </div>
 
   <section class="boardBg p-5 mt-5 shadow">
-    <div class="text-center mb-5 px-2"><img src="/resources/static/images/map.png" alt="지도" class="w-100" ></div>
+    <div th:replace="~{/board/KakaoMapView :: mapView}"></div>
 
-    <form class="row g-3">
+    <form class="row g-3 mt-4">
       <div>
         <label for="title" class="form-label">제목</label>
         <input type="text" class="form-control" id="title" placeholder="제목을 입력해주세요">

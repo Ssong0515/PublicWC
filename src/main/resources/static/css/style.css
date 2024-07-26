@@ -2,20 +2,20 @@
 
 @font-face {
     font-family:'GmarketSans'; font-style:normal; font-weight:100;
-    src: url('//GmarketSansLight.woff') format('woff'),
-    url('//GmarketSansTTFLight.ttf') format('truetype');
+    src: url('font/GmarketSansLight.woff') format('woff'),
+    url('font/GmarketSansTTFLight.ttf') format('truetype');
 }
 
 @font-face {
     font-family:'GmarketSans'; font-style:normal; font-weight:400;
-    src: url('//GmarketSansMedium.woff') format('woff'),
-    url('//GmarketSansTTFMedium.ttf') format('truetype');
+    src: url('font/GmarketSansMedium.woff') format('woff'),
+    url('font/GmarketSansTTFMedium.ttf') format('truetype');
 }
 
 @font-face {
     font-family:'GmarketSans'; font-style:normal; font-weight:700;
-    src: url('//GmarketSansBold.woff') format('woff'),
-    url('//GmarketSansTTFBold.ttf') format('truetype');
+    src: url('font/GmarketSansBold.woff') format('woff'),
+    url('font/GmarketSansTTFBold.ttf') format('truetype');
 }
 
 * {box-sizing:border-box; margin:0; padding:0;}
@@ -42,7 +42,7 @@ h1, h2, h3, h4 {font-weight:bold;}
 .mainConWrap .txt1 {font-size: 1.4rem; margin-bottom: 0!important;}
 .mainConWrap .txt2 {font-size: 6rem; font-weight:bold; margin-top:-15px;}
 .mainConWrap .txt3 {font-size:1.1rem;}
-.mainConWrap h2 {font-size:4rem; margin-bottom:15px;}
+.mainConWrap h2 {font-size:3.6rem; margin-bottom:15px;}
 
 label {font-weight:bold;}
 
@@ -63,18 +63,22 @@ label {font-weight:bold;}
     --bs-btn-disabled-border-color: #3075d9;
 }
 
-.boardBg {background-color: #fff;  border-radius:20px;}
-.listBox {margin-bottom: 20px;}
+.boardBg {background-color: #fff; border-radius:20px;}
+.listBox img {margin-top: -2px; margin-right: 10px;}
 
 .iconWrap {position: absolute; bottom:0; right:0;}
 .iconWrap p {margin-bottom:0;}
 
+.mapSize {width:100%; height:500px;}
+.listMap .mapSize {width:100%; height:300px;}
 
 /* 메인 index */
 .container {margin-top: -500px;}
 .sectionBg {background:#fff;}
 .searchBar {padding:20px; border-radius:50px; border:2px solid #0637a3;}
-.searchBtn {padding:20px; border-radius:50px; border:2px solid #0637a3;}
+.searchBtn {padding:20px; margin-left: 10px; border-radius:50px; border:2px solid #0637a3;}
+
+.form-group {position:relative; width:100%;}
 
 
 @media (min-width: 1400px) {
@@ -92,21 +96,102 @@ label {font-weight:bold;}
 }
 
 
-.btn1 {border-radius: 50px; border:2px solid #ccc; padding:15px 20px; margin-right:15px;}
-.btn2 {border-radius: 50px; border:2px solid #ccc; padding:15px 20px;}
+/*.mainBtn01 {border-radius: 50px; background-color: #d30e58; color:#fff; padding:15px 20px; margin-right:15px; background-image:url("../images/mainIcon01.svg"); }*/
+/*.mainBtn01:before {content:""; display: block; clear: both;}*/
+.mainBtn01 {width:200px; height:200px; border:3px solid #f50859; border-radius: 50%; background-color: #fff; margin:auto; background-image: url("../images/person.png"); background-position: center; background-repeat:no-repeat;background-size:60%; }
+.mainBtn01:hover {border:3px solid #f50859;}
+.pointTxt {color:#f50859; font-weight: bold; font-size:1.2rem;}
+.mainBtn02 {border-radius: 50px; background-color: #fff;  padding:15px 20px;}
+.favoriteWrap .box_img img {background-color:#fff; border:1px solid #ccc;}
+
+.autocomplete-suggestions {
+    border: 1px solid #d4d4d4;
+    border-top:none;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    top:65px;
+    left: 30px;
+    width: 90%;
+}
+
+.autocomplete-suggestion {
+    padding:10px;
+    cursor : pointer;
+}
 
 
-.listWrap {margin-bottom: 50px;}
-.box_img img {border-radius:10px; border:2px solid #ddd; padding: 20px 30px;}
+.autocomplete-suggestion:hover {
+    background-color: #e9ecef;
+}
+
+
 
 /* 로그인 login */
-.loginBg {background-color: #fff;  border-radius:20px;}
+    .loginBg {background-color: #fff;  border-radius:20px;}
 
 
 
-/* 회원가입 signUp */
-/* 목록 boardList */
+    /* 회원가입 signUp */
+
+
+    /* map */
+    .map_wrap, .map_wrap * {margin:0;padding:0;font-size:12px;}
+    .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
+    .map_wrap {position:relative;width:100%;}
+    #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:300px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;z-index: 1;font-size:12px;border-radius: 10px;}
+    .bg_white {background:#fff;}
+    #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+    #menu_wrap .option{text-align: center;}
+    #menu_wrap .option p {margin:10px 0;}
+    #menu_wrap .option button {margin-left:5px;}
+    #placesList li {list-style: none;}
+    #placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
+    #placesList .item span {display: block;margin-top:4px;}
+    #placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+    #placesList .item .info{padding:10px 0 10px 55px;}
+    #placesList .info .gray {color:#8a8a8a;}
+    #placesList .info .jibun {padding-left:26px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
+    #placesList .info .tel {color:#009900;}
+    #placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
+    #placesList .item .marker_1 {background-position: 0 -10px;}
+    #placesList .item .marker_2 {background-position: 0 -56px;}
+    #placesList .item .marker_3 {background-position: 0 -102px}
+    #placesList .item .marker_4 {background-position: 0 -148px;}
+    #placesList .item .marker_5 {background-position: 0 -194px;}
+    #placesList .item .marker_6 {background-position: 0 -240px;}
+    #placesList .item .marker_7 {background-position: 0 -286px;}
+    #placesList .item .marker_8 {background-position: 0 -332px;}
+    #placesList .item .marker_9 {background-position: 0 -378px;}
+    #placesList .item .marker_10 {background-position: 0 -423px;}
+    #placesList .item .marker_11 {background-position: 0 -470px;}
+    #placesList .item .marker_12 {background-position: 0 -516px;}
+    #placesList .item .marker_13 {background-position: 0 -562px;}
+    #placesList .item .marker_14 {background-position: 0 -608px;}
+    #placesList .item .marker_15 {background-position: 0 -654px;}
+    #pagination {margin:10px auto;text-align: center;}
+    #pagination a {display:inline-block;margin-right:10px;}
+    #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+
+
+
+
+    /* 목록 boardList */
+    .listWrap {margin-bottom: 50px;}
+    .stepBox {padding:30px; margin: 20px 0;}
+    .stepBox p {margin-top:20px; margin-bottom:0;}
+    .stepBox div p:last-of-type {font-size:0.9rem;}
+    .box_img img {border-radius:10px; padding: 20px 30px; background-color:#f4f4f4;}
+
+    .mapSearch {width:80%; margin:0 auto;}
+    .listWrap button {font-size:0.9rem;}
+
 /* 상세페이지 boardDetail */
+
+
 /* 글쓰기 boardWrite */
 
 

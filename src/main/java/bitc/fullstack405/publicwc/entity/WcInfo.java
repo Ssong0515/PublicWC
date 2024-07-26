@@ -23,12 +23,12 @@ public class WcInfo {
     @ColumnDefault("1")
     private int level; // 화장실 등급
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String name; // 화장실 이름
 
     @Column(nullable = false)
     private String addr1; // 도로명 주소
-    
+
     @Column(nullable = false)
     private String addr2; // 지번 주소
 

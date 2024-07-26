@@ -12,31 +12,31 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-//@DynamicInsert
 public class Users {
+
     @Id
-    private String id; // 아이디
+    private String id;
 
     @Column(nullable = false)
-    private String password; // 비밀번호
+    private String password;
 
     @Column(nullable = false)
-    private String email; // 이메일
+    private String email;
 
     @Column(nullable = false)
-    private String gender; // 성별
+    private String gender;
 
     @Column(nullable = false)
     @ColumnDefault("false")
-    private String handicap; // 장애인
+    private String handicap;
 
     @Column(nullable = false)
     @ColumnDefault("0")
-    private int passKey; // 화장실 비번 키
+    private int passkey;
 
     @ManyToMany
     @JoinTable(name = "userWcFavorites", joinColumns = @JoinColumn(name = "userId"),
-    inverseJoinColumns = @JoinColumn(name = "wcId"))
+            inverseJoinColumns = @JoinColumn(name = "wcId"))
     @ToString.Exclude
     private List<WcInfo> favoriteWcList = new ArrayList<>();
 

@@ -20,46 +20,46 @@
 <header th:replace="~{/layout/header :: headerNavbar}"></header>
 
 <!-- 상세페이지 시작 -->
-  <main class="container">
-    <div class="mainConWrap text-center text-white">
-      <h2>상세페이지</h2>
-      <p>우리들의 공공화장실, 상세페이지입니다.</p>
-    </div>
+<main class="container">
+  <div class="mainConWrap text-center text-white">
+    <h2>상세페이지</h2>
+    <p>우리들의 공공화장실, 우화의 상세페이지입니다.</p>
+  </div>
 
-    <section class="boardBg p-5 mt-5 shadow">
-      <div class="text-center mb-5 px-2"><img src="/resources/static/images/map.png" alt="지도" class="w-100" ></div>
+  <section class="boardBg p-5 mt-5 shadow">
+    <div th:replace="~{/board/KakaoMapView :: mapView}"></div>
 
-    <div>
+    <div class="mt-5">
       <h3>부산공공화장실</h3>
       <hr>
-      <div class="text-end">
-        <div>
-          <span class="me-3"><img src="/resources/static/images/thumb_up.svg" alt="좋아요 아이콘"><sapn class="ms-1">10</sapn></span>
-          <span class="me-3"><img src="/resources/static/images/thumb_down.svg" alt="싫어요 아이콘"><sapn class="ms-1">0</sapn></span>
-          <span><img src="/resources/static/images/favorites_off.svg" alt="즐겨찾기 아이콘"></span>
-<!--          <span><img src="/resources/static/images/favorites_on.svg" alt="선택된 즐겨찾기 아이콘"></span>-->
+      <div class="float-end">
+        <div class="d-flex">
+          <p class="me-3"><img src="/images/thumb_up.svg" alt="좋아요 아이콘"><span class="ms-1">10</span></p>
+          <p class="me-3"><img src="/images/thumb_down.svg" alt="싫어요 아이콘"><span class="ms-1">0</span></p>
+          <p><img src="/images/favorites_off.svg" alt="즐겨찾기 아이콘"></p>
+          <!--          <span><img src="/images/favorites_on.svg" alt="선택된 즐겨찾기 아이콘"></span>-->
         </div>
       </div>
     </div>
-    <div class="listBox">
-      <span><img src="/resources/static/images/address.svg" alt="주소 아이콘"></span>
-      <span>주소 : <strong>부산 부산진구 중앙대로 708</strong> 부산파이낸스센터 4층 </span>
+    <div class="listBox d-flex">
+      <p><img src="/images/address.svg" alt="주소 아이콘"></p>
+      <p>주소 : <span>부산 부산진구 중앙대로 708 부산파이낸스센터 4층</span></p>
     </div>
-    <div class="listBox">
-      <span><img src="/resources/static/images/time.svg" alt="시간 아이콘"></span>
-      <span>개방시간 : 06:00 ~ 24:00</span>
+    <div class="listBox d-flex">
+      <p><img src="/images/time.svg" alt="시간 아이콘"></p>
+      <p>개방시간 : <span>06:00 ~ 24:00</span></p>
     </div>
-    <div class="listBox">
-      <span><img src="/resources/static/images/etc.svg" alt="기타 아이콘"></span>
-      <span>기타 : 기저귀교환대 있음</span>
+    <div class="listBox d-flex">
+      <p><img src="/images/etc.svg" alt="기타 아이콘"></p>
+      <p>기타 : <span>기저귀교환대 있음</span></p>
     </div>
-    <div class="listBox">
-      <span><img src="/resources/static/images/info.svg" alt="정보 아이콘"></span>
-      <span>정보 : 남자 화장실 O, 여자화장실 O, 장애인화장실 O</span>
+    <div class="listBox d-flex">
+      <p><img src="/images/info.svg" alt="정보 아이콘"></p>
+      <p>정보 : <span>남자 화장실 O, 여자화장실 O, 장애인화장실 O</span></p>
     </div>
-    <div class="listBox">
-      <span><img src="/resources/static/images/key.svg" alt="비밀번호 아이콘"></span>
-      <span>키 : xxxxxxxxxx</span>
+    <div class="listBox d-flex">
+      <p><img src="/images/key.svg" alt="비밀번호 아이콘"></p>
+      <p>키 : <span>*********</span></p>
     </div>
 
     <div class="row mt-3">
