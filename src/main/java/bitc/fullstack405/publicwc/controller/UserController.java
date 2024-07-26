@@ -17,31 +17,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // 로그인 페이지 요청 처리
-    @GetMapping("/login")
-    public String showLoginPage() {
-        return "login";
-    }
-
-    // 로그인 처리
-    @PostMapping("/login")
-    public String login(@RequestParam String userId,
-                        @RequestParam String userPw,
-                        Model model,
-                        HttpSession session) {
-        Optional<Users> userOptional = userService.findById(userId);
-
-        if (userOptional.isPresent() && userOptional.get().getPassword().equals(userPw)) {
-            // 로그인 성공
-            session.setAttribute("userId", userOptional.get().getId());
-            return "redirect:/users/mypage"; // 로그인 후 마이페이지로 이동
-        } else {
-            // 로그인 실패
-            model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다.");
-            return "login";
-        }
-    }
-
     // 회원 가입 페이지 요청 처리
     @GetMapping("/signup")
     public String showSignupPage() {
@@ -50,21 +25,29 @@ public class UserController {
 
     // 회원 가입 폼 제출 처리
     @PostMapping("/signup")
-    public String signup(@RequestParam String password,
+    public String signup(@RequestParam String userId,
+                         @RequestParam String password,
                          @RequestParam String confirmPassword,
                          @RequestParam String email,
                          @RequestParam String gender,
                          @RequestParam String handicap,
                          Model model) {
 
+        // 아이디 중복 체크
+        if (userService.findById(userId).isPresent()) {
+            model.addAttribute("error", "이미 존재하는 아이디입니다.");
+            return "login/signUp";
+        }
+
         // 비밀번호와 비밀번호 확인이 일치하는지 확인
         if (!password.equals(confirmPassword)) {
             model.addAttribute("error", "비밀번호가 일치하지 않습니다.");
-            return "signup";
+            return "login/signUp";
         }
 
         // 새로운 사용자 객체 생성
         Users newUser = new Users();
+        newUser.setId(userId);
         newUser.setPassword(password); // 비밀번호는 암호화됨
         newUser.setEmail(email);
         newUser.setGender(gender);
@@ -73,7 +56,7 @@ public class UserController {
         // 사용자 정보를 데이터베이스에 저장
         userService.saveUser(newUser);
         model.addAttribute("message", "회원 가입이 완료되었습니다. 로그인을 해주세요.");
-        return "login";
+        return "login/login";
     }
 
     // 마이페이지 요청 처리
@@ -128,3 +111,4 @@ public class UserController {
         return "redirect:/"; // 탈퇴 후 메인 페이지로 리다이렉트
     }
 }
+
