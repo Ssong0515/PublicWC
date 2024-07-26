@@ -8,40 +8,37 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("users")
 public class LoginController {
 
     @Autowired
     private UserService userService;
 
-    // 메인 페이지 요청 처리
-    @GetMapping("/")
-    public String home() {
-        return "index";
-    }
-
-    // 로그인 페이지 요청 처리
+    /**
+     * 로그인 페이지를 보여줍니다.
+     */
     @GetMapping("/login")
     public String login() {
-        return "login/login";
+        return "/login";
     }
 
-    // 로그인 폼 제출 처리
-    @PostMapping("/loginProcess.do")
+    /**
+     * 로그인 폼 제출을 처리하고, 로그인 성공 시 메인 페이지로 리다이렉트합니다.
+     * 로그인 실패 시 로그인 페이지로 돌아갑니다.
+     */
+    @PostMapping("action=\"/login.do")
     public String login(@RequestParam String userId, @RequestParam String password, Model model) {
-        // 입력된 아이디로 사용자 정보를 조회
         Users users = userService.findById(userId).orElse(null);
 
-        // 사용자 정보가 존재하고 비밀번호가 일치하는지 확인
         if (users != null && userService.checkPassword(users, password)) {
-            model.addAttribute("users", users); // 세션에 사용자 정보 추가
-            return "redirect:/"; // 로그인 성공 시 메인 페이지로 리다이렉트
+            model.addAttribute("users", users);
+            return "redirect:/";
         } else {
-            model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다."); // 오류 메시지 설정
-            return "login/login"; // 로그인 페이지로 다시 이동
+            model.addAttribute("error", "아이디 또는 비밀번호가 올바르지 않습니다.");
+            return "/login";
         }
     }
 }
+
+
