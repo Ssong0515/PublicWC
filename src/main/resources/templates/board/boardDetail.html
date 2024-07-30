@@ -21,7 +21,7 @@
 
       // 좋아요/싫어요 상태 확인
       $.ajax({
-        url: `/wcinfo/${wcId}/status/${userId}`,
+        url: `/WcInfo/${wcId}/status/${userId}`,
         type: 'GET',
         success: function(response) {
           if (response === 'like') {
@@ -35,7 +35,7 @@
       // 좋아요 버튼 클릭 시 처리
       $('#like-button').click(function() {
         $.ajax({
-          url: `/wcinfo/${wcId}/like/${userId}`,
+          url: `/WcInfo/${wcId}/like/${userId}`,
           type: 'POST',
           success: function(response) {
             $('#like-button').addClass('liked');
@@ -50,7 +50,7 @@
       // 싫어요 버튼 클릭 시 처리
       $('#dislike-button').click(function() {
         $.ajax({
-          url: `/wcinfo/${wcId}/dislike/${userId}`,
+          url: `/WcInfo/${wcId}/dislike/${userId}`,
           type: 'POST',
           success: function(response) {
             $('#dislike-button').addClass('disliked');
