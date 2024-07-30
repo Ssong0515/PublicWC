@@ -92,6 +92,7 @@ public class LocationController {
         return mv;
     }
 
+//    좋아요 수 카운트
     @ResponseBody
     @PostMapping("/bestTest")
     public Object bestTest(@RequestParam("userId") String userId, @RequestParam("wcId") int wcId) {
@@ -108,6 +109,7 @@ public class LocationController {
         return map;
     }
 
+//    싫어요 수 카운트
     @ResponseBody
     @PostMapping("/hateTest")
     public Object hateTest(@RequestParam("userId") String userId, @RequestParam("wcId") int wcId) {
