@@ -1,5 +1,7 @@
 package bitc.fullstack405.publicwc.entity;
 
+import bitc.fullstack405.publicwc.entity.Best;
+import bitc.fullstack405.publicwc.entity.Favorite;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -34,7 +36,7 @@ public class WcInfo {
     private String addr2; // 지번 주소
 
     @Column(nullable = false)
-    private String detailAddr; // 상세 주소
+    private String detailAddr = ""; // 기본값 설정
 
     @Column(nullable = true)
     private String time; // 개방 시간
@@ -67,6 +69,7 @@ public class WcInfo {
     @ToString.Exclude
     private List<Best> wcBestList = new ArrayList<>();
 
+    // No-args constructor is needed for JPA
     public WcInfo(String title, String content) {
         // constructor logic
     }

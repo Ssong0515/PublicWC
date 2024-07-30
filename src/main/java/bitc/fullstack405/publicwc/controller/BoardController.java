@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -23,28 +25,32 @@ public class BoardController {
     }
 
     @PostMapping("/write")
-    public String submitPost(@RequestParam("title") String title,
-                             @RequestParam("content") String content,
-                             @RequestParam("addr1") String addr1,
-                             @RequestParam("addr2") String addr2,
-                             @RequestParam("detailAddr") String detailAddr,
-                             @RequestParam("latitude") String latitude,
-                             @RequestParam("longitude") String longitude,
-                             @RequestParam("createUserId") String createUserId,
-                             Model model) {
+    public String submitPost(@RequestParam Map<String, String> allParams) {
+        // 파라미터를 WcInfo 객체로 변환
         WcInfo wcInfo = new WcInfo();
-        wcInfo.setName(title);
-        wcInfo.setComment(content);
-        wcInfo.setAddr1(addr1);
-        wcInfo.setAddr2(addr2);
-        wcInfo.setDetailAddr(detailAddr);
-        wcInfo.setLatitude(latitude);
-        wcInfo.setLongitude(longitude);
-        wcInfo.setCreateUserId(createUserId);
+        wcInfo.setName(allParams.get("title"));
+        wcInfo.setComment(allParams.get("content"));
+        wcInfo.setAddr1(allParams.get("addr1"));
+        wcInfo.setAddr2(allParams.get("addr2"));
+        wcInfo.setTime(allParams.get("time"));
+        wcInfo.setLatitude(allParams.get("latitude"));
+        wcInfo.setLongitude(allParams.get("longitude"));
+        wcInfo.setCreateUserId(allParams.get("createUserId"));
+        wcInfo.setWcpass(allParams.get("wcpass"));
 
+        // 데이터 저장
         toiletService.addWcInfo(wcInfo);
 
-        model.addAttribute("message", "게시물이 성공적으로 등록되었습니다.");
-        return "redirect:/board/list";
+        // 저장 완료 후 목록 페이지로 리다이렉트
+        return "redirect:/board/list?message=게시물이%20성공적으로%20등록되었습니다.";
+    }
+
+    @GetMapping("/list")
+    public String boardList(@RequestParam(value = "message", required = false) String message, Model model) {
+        model.addAttribute("wcList", toiletService.getAllToilets());
+        if (message != null) {
+            model.addAttribute("message", message);
+        }
+        return "board/boardList"; // boardList.html을 렌더링
     }
 }
